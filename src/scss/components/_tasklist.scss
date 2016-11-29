@@ -1,0 +1,13 @@
+$border:                    2px solid $brand-green;
+$border-radius:             8px;
+$tasklist-item-padding:     20px;
+
+.c-tasklist {
+    list-style: none;
+}
+
+.c-tasklist__item {
+    border: $border;
+    border-radius: $border-radius;
+    padding: $tasklist-item-padding;
+}

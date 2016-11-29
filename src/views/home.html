@@ -1,0 +1,11 @@
+<div ng-controller="ApiController as vm">
+    <div class="o-layout">
+        <div ng-repeat="item in vm.items" class="o-layout__item u-1/3@md">
+            <div photo-card class="c-photo" ng-click="_handleClick()" id="photo-{{$index}}" index="{{$index}}"></div>
+        </div>
+    </div>
+</div>
+
+
+
+    

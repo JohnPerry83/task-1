@@ -1,0 +1,30 @@
+///*------------------------------------*\
+//    #DEFAULTS
+//\*------------------------------------*/
+
+
+// High-level base settings.
+$base-font-size:          18px !default;
+$base-line-height:        24px !default;
+$base-text-color:         #111 !default;
+$base-background-color:   #fff !default;
+$base-font-family:        Helvetica, Arial, sans-serif !default;
+
+
+$base-spacing-unit:           $base-line-height !default;
+$base-spacing-unit--tiny:     quarter($base-spacing-unit) !default;
+$base-spacing-unit--small:    halve($base-spacing-unit) !default;
+$base-spacing-unit--large:    double($base-spacing-unit) !default;
+$base-spacing-unit--huge:     quadruple($base-spacing-unit) !default;
+
+
+$global-radius:             6px !default;
+
+
+$site-width: em(1200) !default;
+
+
+$object-namespace: 'o-' !default;
+$component-namespace: 'c-' !default;
+$trump-namespace: 'u-' !default;
+$hack-namespace: '_' !default;

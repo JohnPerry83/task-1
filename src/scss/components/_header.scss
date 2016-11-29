@@ -1,0 +1,23 @@
+$nav-item-padding:      $base-spacing-unit !default;
+$nav-link-color:        $brand-green-darken !default;
+
+
+.c-main-header {
+    background-color: #fff;
+}
+
+.c-main-header__header {}
+    
+    .c-main-header__nav {}
+        
+        .c-main-header__list { 
+            display: block; 
+        }
+            .c-main-header__list-item {
+                display: inline-block;
+                padding: $nav-item-padding;
+            }
+                
+                .c-main-header__list-item__link {
+                    color: $nav-link-color;
+                }

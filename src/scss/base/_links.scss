@@ -1,0 +1,63 @@
+/*------------------------------------*\
+    #LINKS
+\*------------------------------------*/
+
+
+$link-transition: all 50ms linear !default;
+
+
+/* @styleguide
+
+## Links
+
+```
+<p class="lede">This is a <a href="https://en.wikipedia.org/wiki/Lead_paragraph">lede</a> paragraph with <a href="#">some links</a> in it</p>
+
+<p>This is a paragraph with an <a class="link-secret" href="#">invisible link</a> in it</p>
+```
+
+*/
+
+a, %a {
+    text-decoration: $link-text-decoration;
+    color: $link-color;
+
+    @if ($link-transition != none) {
+        transition: $link-transition;
+    }
+
+    @include attention() {
+        color: $link-color-hover;
+
+        @if ($link-text-decoration != $link-text-decoration-hover) {
+            text-decoration: $link-text-decoration-hover;
+        }
+    }
+
+    &:active {
+        text-decoration: $link-text-decoration-active;
+    }
+
+}
+
+
+.link-muted, %link-muted,
+.link-secret, %link-secret {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+.link-secret,
+%link-secret {
+    @include attention() {
+        color: $link-color-hover;
+        text-decoration: $link-text-decoration;
+    }
+}
+
+
+.link-muted, %link-muted {
+    &:hover { color: inherit; }
+}

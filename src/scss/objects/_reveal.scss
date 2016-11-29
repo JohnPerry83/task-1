@@ -1,0 +1,68 @@
+/*------------------------------------*\
+    #REVEAL
+\*------------------------------------*/
+
+
+.#{$object-namespace}reveal,
+%#{$object-namespace}reveal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+    /**
+     * The label element which triggers the open/close.
+     */
+    .#{$object-namespace}reveal__trigger,
+    %#{$object-namespace}reveal__trigger {
+        display: block;
+        cursor: pointer;
+    }
+
+
+    /**
+     * The radio/checkbox element needs to always be hidden.
+     */
+    .#{$object-namespace}reveal__toggle,
+    %#{$object-namespace}reveal__toggle {
+        @include visually-hidden();
+    }
+
+
+    /**
+     * Hide the reveal content.
+     */
+    .#{$object-namespace}reveal__target,
+    %#{$object-namespace}reveal__target {
+        @include visually-hidden();
+
+        /**
+         * When the radio/checkbox is checked, show the reveal content.
+         */
+        .#{$object-namespace}reveal__toggle:checked ~ &,
+        .#{$object-namespace}reveal__toggle.checked ~ & {
+            @include visually-hidden(undo);
+        }
+
+        // ie8 etc
+        &.checked { @include visually-hidden(undo); }
+
+    }
+
+
+.#{$object-namespace}reveal__toggle,
+.#{$object-namespace}reveal__toggle {
+
+    &.checked {
+        ~ .o-reveal__target,
+        + .o-reveal__target {
+            @include visually-hidden(undo);
+        }
+    }
+}
+
+// .checked + .o-reveal__target,
+// .checked ~ .o-reveal__target {
+//     @include visually-hidden(undo);
+// }

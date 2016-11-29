@@ -1,0 +1,44 @@
+/*------------------------------------*\
+    #LAYOUT
+\*------------------------------------*/
+
+
+
+.#{$trump-namespace}float-left      { float: left; }
+.#{$trump-namespace}float-right     { float: right; }
+.#{$trump-namespace}float-none      { float: none; }
+
+
+.#{$trump-namespace}bl      { display: block; }
+.#{$trump-namespace}in-bl   { display: inline-block; }
+.#{$trump-namespace}in   	{ display: inline; }
+
+
+.#{$trump-namespace}abs     { position: absolute; }
+.#{$trump-namespace}rel     { position: relative; }
+
+
+.#{$trump-namespace}zi-1    { z-index: $z-index-plane-1; }
+.#{$trump-namespace}zi-2    { z-index: $z-index-plane-2; }
+.#{$trump-namespace}zi-3    { z-index: $z-index-plane-3; }
+.#{$trump-namespace}zi-4    { z-index: $z-index-plane-4; }
+.#{$trump-namespace}zi-5    { z-index: $z-index-plane-5; }
+
+
+.#{$trump-namespace}centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+// Loop over our breakpoints defined in settings/responsive
+    @each $alias, $condition in $breakpoints {
+
+        @include media-query($alias) {
+
+            .#{$trump-namespace}bl#{$breakpoint-spacer}#{$alias}      { display: block; }
+            .#{$trump-namespace}in-bl#{$breakpoint-spacer}#{$alias}   { display: inline-block; }
+
+        }
+
+    }

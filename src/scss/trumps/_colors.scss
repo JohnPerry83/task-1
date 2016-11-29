@@ -1,0 +1,74 @@
+/*------------------------------------*\
+    #COLORS
+\*------------------------------------*/
+
+// Color utilities
+
+// Text color
+.text-brand-blue,
+%text-brand-blue {
+	color: $brand-blue;
+}
+
+.text-brand-violet,
+%text-brand-violet {
+	color: $brand-violet;
+}
+
+.text-brand-pink,
+%text-brand-pink {
+	color: $brand-pink;
+}
+
+.text-brand-green,
+%text-brand-green {
+	color: $brand-green;
+}
+
+.text-brand-yellow,
+%text-brand-yellow {
+	color: $brand-yellow;
+}
+
+.text-white,
+%text-white {
+	color: #fff !important;
+}
+
+.text-social-facebook,
+%text-social-facebook {
+	color: $facebook-color;
+}
+
+.text-social-twitter,
+%text-social-twitter {
+	color: $twitter-color;
+}
+
+
+// BG Color
+.bg-brand-blue,
+%bg-brand-blue {
+	background-color: $brand-blue;
+}
+
+.bg-brand-violet,
+%bg-brand-violet {
+	background-color: $brand-violet;
+}
+
+.bg-brand-pink,
+%bg-brand-pink {
+	background-color: $brand-pink;
+}
+
+.bg-brand-green,
+%bg-brand-green {
+	background-color: $brand-green;
+}
+
+.bg-brand-yellow,
+%bg-brand-yellow {
+	background-color: $brand-yellow;
+}
+

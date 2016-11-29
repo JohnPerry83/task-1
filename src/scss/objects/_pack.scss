@@ -1,0 +1,171 @@
+/*------------------------------------*\
+    #PACK
+\*------------------------------------*/
+
+/**
+ * The pack object simply causes any number of elements pack up horizontally to
+ * automatically fill an equal, fluid width of their parent.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$pack-gutter:           $base-spacing-unit !default;
+$pack-gutter--tiny:     $base-spacing-unit--tiny !default;
+$pack-gutter--small:    $base-spacing-unit--small !default;
+$pack-gutter--large:    $base-spacing-unit--large !default;
+$pack-gutter--huge:     $base-spacing-unit--huge !default;
+
+
+$enable-pack--auto:   true !default;
+$enable-pack--tiny:   true !default;
+$enable-pack--small:  true !default;
+$enable-pack--large:  true !default;
+$enable-pack--huge:   true !default;
+$enable-pack--rev:    true !default;
+$enable-pack--middle: true !default;
+$enable-pack--bottom: true !default;
+
+
+
+
+
+/**
+ * 1. Fill all available space.
+ * 2. Cause children to be automatically equally sized.
+ */
+.#{$object-namespace}pack,
+%#{$object-namespace}pack {
+    width: 100%; /* [1] */
+    display: table;
+    table-layout: fixed; /* [2] */
+}
+
+    /**
+     * Cause children to adopt table-like structure.
+     */
+    .#{$object-namespace}pack__item,
+    %#{$object-namespace}pack__item {
+        display: table-cell;
+
+        @if ($enable-pack--middle == true) {
+
+            /**
+             * All items are aligned to the middles of each other.
+             */
+
+            .#{$object-namespace}pack--middle > &,
+            %#{$object-namespace}pack--middle > & {
+                vertical-align: middle;
+            }
+
+        }
+
+        @if ($enable-pack--bottom == true) {
+
+            /**
+             * All items are aligned to the bottoms of each other.
+             */
+
+            .#{$object-namespace}pack--bottom > &,
+            %#{$object-namespace}pack--bottom > & {
+                vertical-align: bottom;
+            }
+
+        }
+
+    }
+
+
+
+
+
+@if ($enable-pack--auto == true) {
+
+    /**
+     * Cause children to pack up into available space, but not equally sized.
+     */
+
+    .#{$object-namespace}pack--auto,
+    %#{$object-namespace}pack--auto {
+        table-layout: auto;
+    }
+
+}
+
+
+
+
+
+@if ($enable-pack--tiny == true) {
+
+    /**
+     * Tiny gutters between items.
+     */
+
+    .#{$object-namespace}pack--tiny,
+    %#{$object-namespace}pack--tiny {
+        border-spacing: $pack-gutter--tiny;
+    }
+
+}
+
+@if ($enable-pack--small == true) {
+
+    /**
+     * Small gutters between items.
+     */
+
+    .#{$object-namespace}pack--small,
+    %#{$object-namespace}pack--small {
+        border-spacing: $pack-gutter--small;
+    }
+
+}
+
+@if ($enable-pack--large == true) {
+
+    /**
+     * Large gutters between items.
+     */
+
+    .#{$object-namespace}pack--large,
+    %#{$object-namespace}pack--large {
+        border-spacing: $pack-gutter--large;
+    }
+
+}
+
+@if ($enable-pack--huge == true) {
+
+    /**
+     * Huge gutters between items.
+     */
+
+    .#{$object-namespace}pack--huge,
+    %#{$object-namespace}pack--huge {
+        border-spacing: $pack-gutter--huge;
+    }
+
+}
+
+
+
+
+
+@if ($enable-pack--rev == true) {
+
+    /**
+     * Reversed order packs.
+     */
+
+    .#{$object-namespace}pack--rev,
+    %#{$object-namespace}pack--rev {
+        direction: rtl;
+
+        > .#{$object-namespace}pack__item,
+        > %#{$object-namespace}pack__item {
+            direction: ltr;
+        }
+
+    }
+
+}

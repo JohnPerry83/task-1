@@ -1,0 +1,63 @@
+/*------------------------------------*\
+    #TYPE
+\*------------------------------------*/
+
+
+$enable-responsive-text-alignment:    false !default;
+
+
+// Alignment
+.#{$trump-namespace}text-left           { text-align: left; }
+.#{$trump-namespace}text-right          { text-align: right; }
+.#{$trump-namespace}text-center         { text-align: center; }
+.#{$trump-namespace}text-justify        { text-align: justify; }
+
+
+// Flow
+.#{$trump-namespace}text-nowrap         { white-space: nowrap; }
+.#{$trump-namespace}text-truncate       { @include text-truncate; }
+
+
+// Transformation
+.#{$trump-namespace}text-lowercase      { text-transform: lowercase; }
+.#{$trump-namespace}text-uppercase      { text-transform: uppercase; }
+.#{$trump-namespace}text-capitalize     { text-transform: capitalize; }
+
+
+// Weights
+.#{$trump-namespace}text-thin           { font-weight: 100; }
+.#{$trump-namespace}text-normal         { font-weight: 400; }
+.#{$trump-namespace}text-bold           { font-weight: 700; }
+.#{$trump-namespace}text-bolder         { font-weight: 800; }
+
+
+// Fonts
+.#{$trump-namespace}font-regular        { font-family: $base-font-family; }
+// .#{$trump-namespace}font-narrow         { font-family: $alt-font-family; }
+
+
+// Misc
+.#{$trump-namespace}td-none { text-decoration: none; }
+.#{$trump-namespace}td-underline { text-decoration: underline; }
+
+// Whitespace
+.#{$trump-namespace}ws-nowrap { white-space: nowrap; }
+
+
+@if ($enable-responsive-text-alignment == true) {
+
+    // Loop over our breakpoints defined in settings/responsive
+    @each $alias, $condition in $breakpoints {
+
+        @include media-query($alias) {
+
+            .#{$trump-namespace}text-left#{$breakpoint-spacer}#{$alias}           { text-align: left; }
+            .#{$trump-namespace}text-right#{$breakpoint-spacer}#{$alias}          { text-align: right; }
+            .#{$trump-namespace}text-center#{$breakpoint-spacer}#{$alias}         { text-align: center; }
+
+            .#{$trump-namespace}ws-nowrap#{$breakpoint-spacer}#{$alias}           { white-space: nowrap; }
+        }
+
+    }
+
+}

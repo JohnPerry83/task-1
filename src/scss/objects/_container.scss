@@ -1,0 +1,37 @@
+/*------------------------------------*\
+    #CONTAINER
+\*------------------------------------*/
+
+// A class usually used to contain the layout within a certain width
+
+$container-width:               $site-width !default;
+
+$container-padding:             $base-spacing-unit--tiny !default;
+$container-padding--large:      $base-spacing-unit--tiny !default;
+
+
+.#{$object-namespace}container,
+%#{$object-namespace}container {
+    max-width: $container-width;
+    padding: 0 $container-padding;
+
+    @if($container-padding != $container-padding--large) {
+        @include media-query('md') {
+            padding: 0 $container-padding--large;
+        }
+    }
+
+}
+
+.#{$object-namespace}container--centered,
+%#{$object-namespace}container--centered {
+    margin: 0 auto;
+}
+
+.#{$object-namespace}container--flush,
+%#{$object-namespace}container--flush {
+    padding: 0;
+}
+
+
+.content { overflow-x: hidden; }

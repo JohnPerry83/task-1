@@ -1,0 +1,382 @@
+/*------------------------------------*\
+    #LAYOUT-FLEX
+\*------------------------------------*/
+
+/**
+ * Combine the layout items with the widths found in `trumps/widths`.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$flex-layout-gutter:           $base-spacing-unit !default;
+$flex-layout-gutter--tiny:     $base-spacing-unit--tiny !default;
+$flex-layout-gutter--small:    $base-spacing-unit--small !default;
+$flex-layout-gutter--large:    $base-spacing-unit--large !default;
+$flex-layout-gutter--huge:     $base-spacing-unit--huge !default;
+
+$flex-enable-layout--tiny:     false !default;
+$flex-enable-layout--small:    false !default;
+$flex-enable-layout--large:    false !default;
+$flex-enable-layout--huge:     false !default;
+$flex-enable-layout--flush:    false !default;
+$flex-enable-layout--rev:      false !default;
+$flex-enable-layout--top:      false !default;
+$flex-enable-layout--middle:   false !default;
+$flex-enable-layout--bottom:   false !default;
+$flex-enable-layout--right:    false !default;
+$flex-enable-layout--center:   false !default;
+$flex-enable-layout--auto:     false !default;
+
+
+/* @styleguide
+
+## Layout system flex
+
+It is possible to use flexbox with our grid system. The class <code>o-flex-layout</code> is used to define a grid row element, and the class <code>o-flex-layout__item</code> is used to define a grid column. Column widths are defined using utility classes in a fraction-like format (e.g. `.u-fl-2/3`)
+
+
+```
+<!-- First row (Thirds) -->
+<div class="o-flex-layout u-mb">
+    <div class="o-flex-layout__item u-fl-1/3@md">
+         <div class="demo-layout-block">1/3</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/3@md">
+        <div class="demo-layout-block">1/3</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/3@md">
+        <div class="demo-layout-block">1/3</div>
+    </div>
+</div>
+
+<!-- Second row (Mixed) -->
+<div class="o-flex-layout u-mb">
+    <div class="o-flex-layout__item u-fl-1/2@md">
+         <div class="demo-layout-block">1/2</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/4@md">
+        <div class="demo-layout-block">1/4</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/4@md">
+        <div class="demo-layout-block">1/4</div>
+    </div>
+</div>
+
+<!-- Third row (Fifths) -->
+<div class="o-flex-layout u-mb">
+    <div class="o-flex-layout__item u-fl-1/5@md">
+         <div class="demo-layout-block">1/5</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/5@md">
+         <div class="demo-layout-block">1/5</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/5@md">
+         <div class="demo-layout-block">1/5</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/5@md">
+         <div class="demo-layout-block">1/5</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/5@md">
+         <div class="demo-layout-block">1/5</div>
+    </div>
+</div>
+```
+
+## Responsive widths flex
+
+Columns widths can be set based on the current breakpoint by appending the breakpoint size to the width utility class. For example
+<code>u-fl-1/2@md</code> and <code>u-fl-1/3@lg</code>. By default columns are set to 100% width.
+
+```
+<div class="o-flex-layout">
+    <div class="o-flex-layout__item u-fl-1/2@md u-fl-1/3@lg">
+         <div class="demo-layout-block">1/2</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/4@md u-fl-1/3@lg">
+        <div class="demo-layout-block">1/4</div>
+    </div>
+    <div class="o-flex-layout__item u-fl-1/4@md u-fl-1/3@lg">
+        <div class="demo-layout-block">1/4</div>
+    </div>
+</div>
+```
+
+*/
+
+
+/**
+ * Begin a layout group.
+ */
+.#{$object-namespace}flex-layout,
+%#{$object-namespace}flex-layout {
+    display: flex;
+    flex-wrap: wrap;
+    margin:  0;
+    padding: 0;
+    margin-left: -$flex-layout-gutter;
+}
+
+    /**
+     * 1. Cause columns to auto fill the available width
+     * 2. Space columns apart.
+     * 3. Allows flex-layout__item children to fill height. See speech-bubble__divider for example. Remove if this causes issues and
+     *  re-add at component level.
+     */
+    .#{$object-namespace}flex-layout__item,
+    %#{$object-namespace}flex-layout__item {
+        // flex: 1; /* [1] */
+        // flex: 0 0 100%;
+        padding-left: $flex-layout-gutter; /* [2] */
+        display: flex; /* [3] */
+        flex-wrap: wrap; /* [3] */
+        width: 100%; /* [3] */
+    }
+
+
+
+
+
+
+@if ($flex-enable-layout--tiny == true) {
+
+    /**
+     * Layouts with tiny gutters.
+     */
+
+    .#{$object-namespace}flex-layout--tiny,
+    %#{$object-namespace}flex-layout--tiny {
+        margin-left: -($flex-layout-gutter--tiny);
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            padding-left: $flex-layout-gutter--tiny;
+        }
+
+    }
+
+}
+
+@if ($flex-enable-layout--small == true) {
+
+    /**
+     * Layouts with small gutters.
+     */
+
+    .#{$object-namespace}flex-layout--small,
+    %#{$object-namespace}flex-layout--small {
+        margin-left: -($flex-layout-gutter--small);
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            padding-left: $flex-layout-gutter--small;
+        }
+
+    }
+
+}
+
+@if ($flex-enable-layout--large == true) {
+
+    /**
+     * Layouts with large gutters.
+     */
+
+    .#{$object-namespace}flex-layout--large,
+    %#{$object-namespace}flex-layout--large {
+        margin-left: -($flex-layout-gutter--large);
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            padding-left: $flex-layout-gutter--large;
+        }
+
+    }
+
+}
+
+@if ($flex-enable-layout--huge == true) {
+
+    /**
+     * Layouts with huge gutters.
+     */
+
+    .#{$object-namespace}flex-layout--huge,
+    %#{$object-namespace}flex-layout--huge {
+        margin-left: -($flex-layout-gutter--huge);
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            padding-left: $flex-layout-gutter--huge;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($flex-enable-layout--flush == true) {
+
+    /**
+     * Layouts with no gutters.
+     */
+
+    .#{$object-namespace}flex-layout--flush,
+    %#{$object-namespace}flex-layout--flush {
+        margin-left: 0;
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            padding-left: 0;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($flex-enable-layout--rev == true) {
+
+    /**
+     * Reversed rendered order of layout items, e.g. items 1, 2, 3, 4 in your
+     * markup will display in order 4, 3, 2, 1 on your page.
+     */
+
+    .#{$object-namespace}flex-layout--rev,
+    %#{$object-namespace}flex-layout--rev {
+        direction: rtl;
+        text-align: left;
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            direction: ltr;
+            text-align: left;
+        }
+
+    }
+
+}
+
+
+@if ($flex-enable-layout--top == true) {
+
+    /**
+     * Align layout items to the top of each other.
+     */
+
+    .#{$object-namespace}flex-layout--top,
+    %#{$object-namespace}flex-layout--top {
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            align-self: flex-start;
+        }
+
+    }
+
+}
+
+
+
+@if ($flex-enable-layout--middle == true) {
+
+    /**
+     * Align layout items to the vertical centers of each other.
+     */
+
+    .#{$object-namespace}flex-layout--middle,
+    %#{$object-namespace}flex-layout--middle {
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            align-self: center;
+        }
+
+    }
+
+}
+
+@if ($flex-enable-layout--bottom == true) {
+
+    /**
+     * Align layout items to the vertical bottoms of each other.
+     */
+
+    .#{$object-namespace}flex-layout--bottom,
+    %#{$object-namespace}flex-layout--bottom {
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            align-self: flex-end;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($flex-enable-layout--right == true) {
+
+    /**
+     * Make the layout items fill up from the right hand side.
+     */
+
+    .#{$object-namespace}flex-layout--right,
+    %#{$object-namespace}flex-layout--right {
+        text-align: right;
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            text-align: left;
+        }
+
+    }
+
+}
+
+@if ($flex-enable-layout--center == true) {
+
+    /**
+     * Make the layout items fill up from the center outward.
+     */
+
+    .#{$object-namespace}flex-layout--center,
+    %#{$object-namespace}flex-layout--center {
+        text-align: center;
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            text-align: left;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($flex-enable-layout--auto == true) {
+
+    /**
+     * Cause layout items to take up a non-explicit amount of width.
+     */
+    .#{$object-namespace}flex-layout--auto,
+    %#{$object-namespace}flex-layout--auto {
+
+        > .#{$object-namespace}flex-layout__item,
+        > %#{$object-namespace}flex-layout__item {
+            flex: none;
+        }
+
+    }
+
+}

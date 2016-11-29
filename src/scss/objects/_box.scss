@@ -1,0 +1,108 @@
+/*------------------------------------*\
+    #BOX
+\*------------------------------------*/
+
+/**
+ * The box object simply boxes off content.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$box-padding:          $base-spacing-unit !default;
+$box-padding--tiny:    $base-spacing-unit--tiny !default;
+$box-padding--small:   $base-spacing-unit--small !default;
+$box-padding--large:   $base-spacing-unit--large !default;
+$box-padding--huge:    $base-spacing-unit--huge !default;
+
+$enable-box--flush:    false !default;
+$enable-box--tiny:     false !default;
+$enable-box--small:    false !default;
+$enable-box--large:    false !default;
+$enable-box--huge:     false !default;
+
+
+
+
+
+/**
+ * 1. So we can apply the `.box` class to naturally-inline elements.
+ */
+.#{$object-namespace}box,
+%#{$object-namespace}box {
+    @extend %#{$trump-namespace}clearfix;
+    display: block; /* [1] */
+    padding: $box-padding;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+
+}
+
+
+
+
+
+@if ($enable-box--flush == true) {
+
+    /**
+     * Flush (i.e. no padding) box.
+     */
+
+    .#{$object-namespace}box--flush,
+    %#{$object-namespace}box--flush {
+        padding: 0;
+    }
+
+}
+
+@if ($enable-box--tiny == true) {
+
+    /**
+     * Tiny box.
+     */
+
+    .#{$object-namespace}box--tiny,
+    %#{$object-namespace}box--tiny {
+        padding: $box-padding--tiny;
+    }
+
+}
+
+@if ($enable-box--small == true) {
+
+    /**
+     * Small box.
+     */
+
+    .#{$object-namespace}box--small,
+    %#{$object-namespace}box--small {
+        padding: $box-padding--small;
+    }
+
+}
+
+@if ($enable-box--large == true) {
+
+    /**
+     * Large box.
+     */
+
+    .#{$object-namespace}box--large,
+    %#{$object-namespace}box--large {
+        padding: $box-padding--large;
+    }
+
+}
+
+@if ($enable-box--huge == true) {
+
+    /**
+     * Huge box.
+     */
+
+    .#{$object-namespace}box--huge,
+    %#{$object-namespace}box--huge {
+        padding: $box-padding--huge;
+    }
+
+}

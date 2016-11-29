@@ -1,0 +1,34 @@
+///*------------------------------------*\
+//    #UNITS
+//\*------------------------------------*/
+
+
+// Remove the unit of a length
+// @param {Number} $number - Number to remove unit from
+// @return {Number} - Unitless number
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+
+	@return $number;
+}
+
+
+
+// Calculate an `em` value from a `px` value
+@function em($px, $base: $base-font-size) {
+    @return (strip-unit($px) / strip-unit($base)) * 1em;
+}
+
+
+// Calculate a `rem` value from a `px` value
+@function rem($px, $base: $base-font-size) {
+    @return (strip-unit($px) / strip-unit($base)) * 1rem;
+}
+
+
+// Calculate a `px` value from an `em` value
+@function px($em, $base: $base-font-size) {
+    @return (strip-unit($em) * strip-unit($base)) * 1px;
+}

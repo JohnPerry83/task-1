@@ -1,0 +1,316 @@
+/*------------------------------------*\
+    #LAYOUT
+\*------------------------------------*/
+
+/**
+ * Combine the layout items with the widths found in `trumps/widths`.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$layout-gutter:           $base-spacing-unit !default;
+$layout-gutter--tiny:     $base-spacing-unit--tiny !default;
+$layout-gutter--small:    $base-spacing-unit--small !default;
+$layout-gutter--large:    $base-spacing-unit--large !default;
+$layout-gutter--huge:     $base-spacing-unit--huge !default;
+
+$enable-layout--tiny:     false !default;
+$enable-layout--small:    false !default;
+$enable-layout--large:    false !default;
+$enable-layout--huge:     false !default;
+$enable-layout--flush:    false !default;
+$enable-layout--rev:      false !default;
+$enable-layout--middle:   false !default;
+$enable-layout--bottom:   false !default;
+$enable-layout--right:    false !default;
+$enable-layout--center:   false !default;
+$enable-layout--auto:     false !default;
+
+
+/**
+ * Begin a layout group.
+ */
+.#{$object-namespace}layout,
+%#{$object-namespace}layout {
+    list-style: none;
+    margin:  0;
+    padding: 0;
+
+    // make the default gutter tiny for small screens
+    margin-left: -$layout-gutter--tiny;
+
+    // increase gutter for medium screens
+    @include media-query('md') {
+        margin-left: -$layout-gutter;
+    }
+
+    @extend %u-clearfix;
+}
+
+    /**
+     * 1. Cause columns to stack side-by-side.
+     * 2. Space columns apart.
+     * 3. Align columns to the tops of each other.
+     * 4. Full-width unless told to behave otherwise.
+     * 5. Necessary since we cannot ensure markup is minified.
+     */
+    .#{$object-namespace}layout__item,
+    %#{$object-namespace}layout__item {
+        display: inline-block; /* [1] */
+
+        // make the default gutter tiny for small screens
+        padding-left: $layout-gutter--tiny; /* [2] */
+
+        vertical-align: top; /* [3] */
+        width: 100%; /* [4] */
+        float: left; /* [5] */
+
+        // increase gutter for medium screens
+        @include media-query('md') {
+            padding-left: $layout-gutter;
+        }
+    }
+
+
+
+.#{$object-namespace}layout--no-float,
+%#{$object-namespace}layout--no-float {
+
+    > .#{$object-namespace}layout__item,
+    > %#{$object-namespace}layout__item {
+        float: none;
+    }
+
+}
+
+
+
+@if ($enable-layout--tiny == true) {
+
+    /**
+     * Layouts with tiny gutters.
+     */
+
+    .#{$object-namespace}layout--tiny,
+    %#{$object-namespace}layout--tiny {
+        margin-left: -($layout-gutter--tiny);
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            padding-left: $layout-gutter--tiny;
+        }
+
+    }
+
+}
+
+@if ($enable-layout--small == true) {
+
+    /**
+     * Layouts with small gutters.
+     */
+
+    .#{$object-namespace}layout--small,
+    %#{$object-namespace}layout--small {
+        margin-left: -($layout-gutter--small);
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            padding-left: $layout-gutter--small;
+        }
+
+    }
+
+}
+
+@if ($enable-layout--large == true) {
+
+    /**
+     * Layouts with large gutters.
+     */
+
+    .#{$object-namespace}layout--large,
+    %#{$object-namespace}layout--large {
+        margin-left: -($layout-gutter--large);
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            padding-left: $layout-gutter--large;
+        }
+
+    }
+
+}
+
+@if ($enable-layout--huge == true) {
+
+    /**
+     * Layouts with huge gutters.
+     */
+
+    .#{$object-namespace}layout--huge,
+    %#{$object-namespace}layout--huge {
+        margin-left: -($layout-gutter--huge);
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            padding-left: $layout-gutter--huge;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($enable-layout--flush == true) {
+
+    /**
+     * Layouts with no gutters.
+     */
+
+    .#{$object-namespace}layout--flush,
+    %#{$object-namespace}layout--flush {
+        margin-left: 0;
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            padding-left: 0;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($enable-layout--rev == true) {
+
+    /**
+     * Reversed rendered order of layout items, e.g. items 1, 2, 3, 4 in your
+     * markup will display in order 4, 3, 2, 1 on your page.
+     */
+
+    .#{$object-namespace}layout--rev,
+    %#{$object-namespace}layout--rev {
+        direction: rtl;
+        text-align: left;
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            direction: ltr;
+            text-align: left;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($enable-layout--middle == true) {
+
+    /**
+     * Align layout items to the vertical centers of each other.
+     */
+
+    .#{$object-namespace}layout--middle,
+    %#{$object-namespace}layout--middle {
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            vertical-align: middle;
+        }
+
+    }
+
+}
+
+@if ($enable-layout--bottom == true) {
+
+    /**
+     * Align layout items to the vertical bottoms of each other.
+     */
+
+    .#{$object-namespace}layout--bottom,
+    %#{$object-namespace}layout--bottom {
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            vertical-align: bottom;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($enable-layout--right == true) {
+
+    /**
+     * Make the layout items fill up from the right hand side.
+     */
+
+    .#{$object-namespace}layout--right,
+    %#{$object-namespace}layout--right {
+        text-align: right;
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            text-align: left;
+        }
+
+    }
+
+}
+
+
+
+@if ($enable-layout--center == true) {
+
+    /**
+     * Make the layout items fill up from the center outward.
+     */
+
+    .#{$object-namespace}layout--center,
+    %#{$object-namespace}layout--center {
+        text-align: center;
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            text-align: left;
+            float: none;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($enable-layout--auto == true) {
+
+    /**
+     * Cause layout items to take up a non-explicit amount of width.
+     */
+    .#{$object-namespace}layout--auto,
+    %#{$object-namespace}layout--auto {
+
+        > .#{$object-namespace}layout__item,
+        > %#{$object-namespace}layout__item {
+            width: auto;
+        }
+
+    }
+
+}

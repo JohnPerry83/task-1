@@ -1,0 +1,78 @@
+/*------------------------------------*\
+    #LIST-INLINE
+\*------------------------------------*/
+
+/**
+ * The list-inline object simply displays a list of items in one line.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$enable-list-inline--delimited:   false !default;
+$list-inline-delimit-character:   ",\00A0" !default;
+
+
+/* @styleguide
+
+## List Inline
+
+Note the exclusion of the closing `</li>` tags for the delimited version.
+This is to remove the extra spacing caused by `display: inline-block`.
+[It is still valid html](http://www.w3.org/TR/html-markup/li.html)
+
+```
+<ul class="o-list-inline">
+    <li><a href="#">Foo</a></li>
+    <li><a href="#">Bar</a></li>
+    <li><a href="#">Baz</a></li>
+</ul>
+
+<ul class="o-list-inline  o-list-inline--delimited">
+    <li><a href="#">Foo</a>
+    <li><a href="#">Bar</a>
+    <li><a href="#">Baz</a>
+</ul>
+```
+
+*/
+
+
+.#{$object-namespace}list-inline,
+%#{$object-namespace}list-inline {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+        display: inline-block;
+    }
+
+}
+
+
+
+
+
+@if ($enable-list-inline--delimited == true) {
+
+    /**
+     * Comma delimited list to semantically mark up lists of tags, etc.
+     *
+     * N.B. This component requires that you remove the whitespace between LIs.
+     *      The simplest (and valid) way to achieve this is by omitting the
+     *      closing `</li>` tag.
+     */
+
+    .#{$object-namespace}list-inline--delimited,
+    %#{$object-namespace}list-inline--delimited {
+
+        > li + li {
+
+            &:before {
+                content: "#{$list-inline-delimit-character}";
+            }
+
+        }
+
+    }
+
+}

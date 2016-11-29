@@ -1,0 +1,22 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+$heading-sizes:     36px, 30px, 24px, 20px, 16px, 14px !default;
+
+$heading-color:     $brand-blue-darken;
+$heading-weight:    800;
+
+
+// Create all specified heading styles in one go.
+@each $size in $heading-sizes {
+    h#{index($heading-sizes, $size)} {
+        @include font-size($size);
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $heading-color;
+    font-weight: $heading-weight;
+}
+

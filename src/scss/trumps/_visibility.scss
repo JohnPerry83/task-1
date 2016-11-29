@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    #VISIBILITY
+\*------------------------------------*/
+
+$enable-responsive-visibility:      true !default;
+
+
+.#{$trump-namespace}invisible         { visibility: hidden; }
+.#{$trump-namespace}hide, [hidden]    { display: none; }
+.#{$trump-namespace}show              { display: inherit; }
+
+// show for screen readers only
+// See - http://a11yproject.com/posts/how-to-hide-content/
+.#{$trump-namespace}sr-only {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+
+
+@if ($enable-responsive-visibility == true) {
+
+    // Loop over our breakpoints defined in settings/responsive
+    @each $alias, $condition in $breakpoints {
+
+        @include media-query($alias) {
+
+            .#{$trump-namespace}invisible#{$breakpoint-spacer}#{$alias}  { visibility: hidden; }
+            .#{$trump-namespace}hide#{$breakpoint-spacer}#{$alias}       { display: none; }
+            .#{$trump-namespace}show#{$breakpoint-spacer}#{$alias}       { display: inherit; }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,113 @@
+/*------------------------------------*\
+    #OPTIONS
+\*------------------------------------*/
+
+/**
+ * A simple button object.
+ */
+
+$option-padding:                    $base-spacing-unit--tiny $base-spacing-unit !default;
+$option-border-color:               #ddd !default;
+$option-border-radius:              999px !default;
+$option-border-radius-small:        $base-spacing-unit !default;
+$options-break-at:                  'sm';
+
+/*
+
+## Options
+
+
+```
+<ul class="o-options u-mb">
+    <li><a href="#">Lorem</a>
+    <li><a href="#">Ipsum</a>
+    <li><a href="#">Dolor</a>
+    <li><a href="#">Amet</a>
+</ul>
+
+<ul class="o-options o-options--fit">
+    <li><a class="u-text-center" href="#">Lorem</a>
+    <li><a class="u-text-center" href="#">Ipsum</a>
+    <li><a class="u-text-center" href="#">Dolor</a>
+    <li><a class="u-text-center" href="#">Amet</a>
+</ul>
+```
+
+*/
+
+/**
+ * 1. Re-use the list-inline syles
+ */
+.#{$object-namespace}options,
+%#{$object-namespace}options {
+    @extend %#{$object-namespace}list-inline; /* [1] */
+    display: inline-block;
+    width: 100%;
+
+    > li {
+        width: 100%;
+
+        > a {
+            display: inline-block;
+            padding: $option-padding;
+            border: 0 solid $option-border-color;
+            border-width: 0 1px 1px 1px;
+            width: 100%;
+        }
+
+        &:first-child > a {
+            border-top-left-radius: $option-border-radius-small;
+            border-top-right-radius: $option-border-radius-small;
+        }
+
+        &:last-child > a {
+            border-bottom-left-radius: $option-border-radius-small;
+            border-bottom-right-radius: $option-border-radius-small;
+        }
+
+    }
+
+    @include media-query($options-break-at) {
+        width: auto;
+
+         > li {
+            width: auto;
+
+            > a {
+                border-left-width: 0;
+                width: auto;
+            }
+
+            &:first-child > a {
+                border-left-width: 1px;
+                border-top-right-radius: 0;
+                border-top-left-radius: $option-border-radius;
+                border-bottom-left-radius: $option-border-radius;
+            }
+
+            &:last-child > a {
+                border-bottom-left-radius: 0;
+                border-top-right-radius: $option-border-radius;
+                border-bottom-right-radius: $option-border-radius;
+            }
+        }
+    }
+}
+
+
+
+.#{$object-namespace}options--fit,
+%#{$object-namespace}options--fit {
+    display: table;
+    width: 100%;
+
+    > li {
+        display: table-cell;
+
+        > a {
+            display: block;
+        }
+    }
+}
+
+

@@ -1,0 +1,25 @@
+/*------------------------------------*\
+    #PILLS
+\*------------------------------------*/
+
+
+.#{$object-namespace}pills,
+%#{$object-namespace}pills {
+    @extend %#{$trump-namespace}clearfix;
+    margin:  0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+}
+
+    .#{$object-namespace}pills__item,
+    %#{$object-namespace}pills__item {
+        float: left;
+    }
+
+        .#{$object-namespace}pills__link,
+        %#{$object-namespace}pills__link {
+            display: block;
+        }
+

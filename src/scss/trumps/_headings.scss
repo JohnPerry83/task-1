@@ -1,0 +1,56 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+
+$enable-responsive-headings:  false !default;
+
+
+/**
+ * Headings 1-6's corresponding Greek-alphabet abstract classes.
+ *
+ * Use these helper classes to cause other elements to adopt the styling of the
+ * respective heading, e.g.:
+ *
+   <h2 class="alpha">Lorem ipsum</h2>
+ *
+ */
+
+$names: alpha, beta, gamma, delta, epsilon, zeta !default;
+
+
+// Create all heading aliases in one go.
+@each $name in $names {
+    .#{$trump-namespace}#{$name},
+	%#{$trump-namespace}#{$name} {
+		@include font-size(nth($heading-sizes, index($names, $name)));
+	}
+}
+
+
+// Responsive heading size classes
+// e.g.
+//
+// u-alpha@md
+// u-beta@lg
+// etc
+//
+@if ($enable-responsive-headings == true) {
+
+    // Loop over our breakpoints defined in settings/responsive
+    @each $alias, $condition in $breakpoints {
+
+        @include media-query($alias) {
+
+            @each $name in $names {
+                .#{$trump-namespace}#{$name}#{$breakpoint-spacer}#{$alias},
+                %#{$trump-namespace}#{$name}#{$breakpoint-spacer}#{$alias} {
+                    @include font-size(nth($heading-sizes, index($names, $name)));
+                }
+            }
+
+        }
+
+    }
+
+}

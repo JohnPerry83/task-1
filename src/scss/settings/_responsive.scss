@@ -1,0 +1,20 @@
+///*------------------------------------*\
+//    #SETTINGS-RESPONSIVE
+//\*------------------------------------*/
+
+// Hold our breakpoint aliases and conditions in a list.
+//
+// These can be invoked later on via the `media-query()` mixin found in
+// `tools/mixins/responsive`.
+
+$breakpoints: (
+    sm:       'screen and (min-width: 30em)', // 480
+    md:       'screen and (min-width: 48em)', // 768
+    lg:       'screen and (min-width: 64em)', // 1024
+    xl:       'screen and (min-width: 75em)', // 1200
+    retina:   '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)'
+) !default;
+
+// The spacer to place between the class and the breakpoint size
+// e.g. `u-1/2@md` or `u-m0@lg`
+$breakpoint-spacer: \@!default;

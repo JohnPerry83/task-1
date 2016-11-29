@@ -1,0 +1,153 @@
+/*------------------------------------*\
+    #BLOCK
+\*------------------------------------*/
+
+/**
+ * The block object simply stacks an image on top of some text-like content.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$block-gutter:            $base-spacing-unit !default;
+$block-gutter--tiny:      $base-spacing-unit--tiny !default;
+$block-gutter--small:     $base-spacing-unit--small !default;
+$block-gutter--large:     $base-spacing-unit--large !default;
+$block-gutter--huge:      $base-spacing-unit--huge !default;
+
+$enable-block--flush:     false !default;
+$enable-block--tiny:      false !default;
+$enable-block--small:     false !default;
+$enable-block--large:     false !default;
+$enable-block--huge:      false !default;
+$enable-block--center:    false !default;
+$enable-block--right:     false !default;
+
+
+
+
+
+/**
+ * Stacked image-with-text object. A simple abstraction to cover a very commonly
+ * occurring design pattern.
+ */
+.#{$object-namespace}block,
+%#{$object-namespace}block {
+    display: block;
+}
+
+
+    /**
+     * 1. Eliminate whitespace around images.
+     */
+    .#{$object-namespace}block__img,
+    %#{$object-namespace}block__img {
+        vertical-align: middle; /* [1] */
+        margin-bottom: $block-gutter;
+
+        @if ($enable-block--flush == true) {
+
+            /**
+             * No space between the image and the text content.
+             */
+
+            .#{$object-namespace}block--flush > &,
+            %#{$object-namespace}block--flush > & {
+                margin-bottom: 0;
+            }
+
+        }
+
+        @if ($enable-block--tiny == true) {
+
+            /**
+             * Tiny space between the image and the text content.
+             */
+
+            .#{$object-namespace}block--tiny > &,
+            %#{$object-namespace}block--tiny > & {
+                margin-bottom: $block-gutter--tiny;
+            }
+
+        }
+
+        @if ($enable-block--small == true) {
+
+            /**
+             * Small space between the image and the text content.
+             */
+
+            .#{$object-namespace}block--small > &,
+            %#{$object-namespace}block--small > & {
+                margin-bottom: $block-gutter--small
+            }
+
+        }
+
+        @if ($enable-block--large == true) {
+
+            /**
+             * Large space between the image and the text content.
+             */
+
+            .#{$object-namespace}block--large > &,
+            %#{$object-namespace}block--large > & {
+                margin-bottom: $block-gutter--large;
+            }
+
+        }
+
+        @if ($enable-block--huge == true) {
+
+            /**
+             * Huge space between the image and the text content.
+             */
+
+            .#{$object-namespace}block--huge > &,
+            %#{$object-namespace}block--huge > & {
+                margin-bottom: $block-gutter--huge;
+            }
+
+        }
+
+    }
+
+
+
+
+
+    /**
+     * Text-content.
+     */
+    .#{$object-namespace}block__body,
+    %#{$object-namespace}block__body {
+        display: block;
+    }
+
+
+
+
+
+@if ($enable-block--right == true) {
+
+    /**
+     * Right-aligned blocks.
+     */
+
+    .#{$object-namespace}block--right,
+    %#{$object-namespace}block--right {
+        text-align: right;
+    }
+
+}
+
+@if ($enable-block--center == true) {
+
+    /**
+     * Center-aligned blocks.
+     */
+
+    .#{$object-namespace}block--center,
+    %#{$object-namespace}block--center {
+        text-align: center;
+    }
+
+}

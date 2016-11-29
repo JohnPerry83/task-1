@@ -1,0 +1,20 @@
+$enable-flex-layout:  true !default;
+
+@if ($enable-flex-layout == true) {
+
+    // Loop over our breakpoints defined in settings/responsive
+    @each $alias, $condition in $breakpoints {
+
+        @include media-query($alias) {
+
+        	.#{$object-namespace}flex#{$breakpoint-spacer}#{$alias},
+        	%#{$object-namespace}flex#{$breakpoint-spacer}#{$alias} { display: flex; }
+
+        	.#{$object-namespace}flex__item#{$breakpoint-spacer}#{$alias},
+        	%#{$object-namespace}flex__item#{$breakpoint-spacer}#{$alias} { display: flex; }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,45 @@
+///*------------------------------------*\
+//    #RESPONSIVE
+//\*------------------------------------*/
+
+// A simple mixin to quickly generate whole media queries from the aliases and
+// conditions defined in `settings/_responsive.scss`.
+//
+// Usage:
+//
+// .foo {
+//     color: green;
+//
+//     @include media-query(palm) {
+//         color: red;
+//     }
+//
+// }
+
+@mixin media-query($name, $include-retina: false) {
+
+    // If a non-existent alias is specified, send a warning.
+    @if (not map-has-key($breakpoints, $name)) {
+        @warn "Oops! Breakpoint ‘#{$name}’ does not exist.";
+    }
+
+    @if ($include-retina == false) {
+        $breakpoints: map-remove($breakpoints, 'retina');
+    }
+
+    // Loop through the list of breakpoints we’ve provided in our settings file.
+    // except retina
+    @each $alias, $condition in $breakpoints {
+
+        // If the media query we’ve specified has an alias and a condition...
+        @if ($name == $alias and $condition) {
+
+            @media #{$condition} {
+                @content;
+            }
+
+        }
+
+    }
+
+}

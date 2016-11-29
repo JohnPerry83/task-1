@@ -1,0 +1,199 @@
+///*------------------------------------*\
+//    #CUSTOM
+//\*------------------------------------*/
+
+
+$base-spacing-unit:           30px;
+$base-spacing-unit--teeny:    10px;
+$base-spacing-unit--tiny:     15px;
+$base-spacing-unit--small:    20px;
+$base-spacing-unit--large:    40px;
+$base-spacing-unit--huge:     50px;
+
+$base-text-color: #333;
+
+$layout-gutter--tiny:       $base-spacing-unit--tiny;
+$layout-gutter--small:      $base-spacing-unit--small;
+$layout-gutter--large:      $base-spacing-unit--large;
+$layout-gutter--huge:       $base-spacing-unit--huge;
+
+
+$container-padding--large:      $base-spacing-unit--small;
+
+
+$breakpoints: (
+    sm:       'screen and (min-width: 40em)', // 640
+    md:       'screen and (min-width: 48em)', // 768
+    lg:       'screen and (min-width: 60em)', // 960
+    xl:       'screen and (min-width: 75em)', // 1200
+    retina:   '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)'
+);
+
+$heading-sizes: 48px, 36px, 24px, 18px, 16px, 14px;
+
+$enable-responsive-headings: true;
+
+$lede-size:   1.25;
+
+
+// Widths
+$widths-columns: (1, 2, 3, 4, 5, 6, 7);
+
+
+// Widths Responsive
+$widths-columns-responsive: (1, 2, 3, 4, 5, 6, 7);
+
+
+
+// Here we choose what parts we want in our CSS
+
+// Layout
+$enable-layout--tiny:     true;
+$enable-layout--small:    true;
+$enable-layout--large:    true;
+$enable-layout--huge:     true;
+$enable-layout--flush:    true;
+$enable-layout--rev:      true;
+$enable-layout--middle:   true;
+$enable-layout--bottom:   true;
+$enable-layout--right:    true;
+$enable-layout--center:   true;
+$enable-layout--auto:     true;
+
+
+// Media
+$enable-media--tiny:          true;
+$enable-media--small:         true;
+$enable-media--large:         true;
+$enable-media--huge:          true;
+$enable-media--rev:           true;
+$enable-media--flush:         true;
+$enable-media--responsive:    true;
+$media-collapse-at:           45em;
+
+
+// Flag
+$enable-flag--tiny:       true;
+$enable-flag--small:      true;
+$enable-flag--large:      true;
+$enable-flag--huge:       true;
+$enable-flag--rev:        true;
+$enable-flag--flush:      true;
+$enable-flag--top:        true;
+$enable-flag--bottom:     true;
+$enable-flag--responsive: true;
+$flag-collapse-at:        45em;
+
+
+// Block
+$enable-block--flush:     false;
+$enable-block--tiny:      false;
+$enable-block--small:     false;
+$enable-block--large:     false;
+$enable-block--huge:      false;
+$enable-block--center:    false;
+$enable-block--right:     false;
+
+
+
+// Box
+$enable-box--flush:   false;
+$enable-box--tiny:    false;
+$enable-box--small:   false;
+$enable-box--large:   false;
+$enable-box--huge:    false;
+
+
+
+// Buttons
+$enable-btn--small:   false;
+$enable-btn--large:   false;
+$enable-btn--full:    false;
+$enable-btn--pill:    false;
+
+
+
+// Spacing
+$enable-margins:                  true;
+$enable-margins--teeny:           true;
+$enable-margins--tiny:            true;
+$enable-margins--small:           true;
+$enable-margins--large:           true;
+$enable-margins--huge:            true;
+
+$enable-margins--negative:        true;
+$enable-margins--negative-tiny:   true;
+$enable-margins--negative-small:  true;
+$enable-margins--negative-large:  true;
+$enable-margins--negative-huge:   true;
+
+$enable-margins--none:            true;
+
+$enable-paddings:                 true;
+$enable-paddings--teeny:          true;
+$enable-paddings--tiny:           true;
+$enable-paddings--small:          true;
+$enable-paddings--large:          true;
+$enable-paddings--huge:           true;
+
+$enable-paddings--none:           true;
+
+
+
+// Spacing Responsive
+$enable-responsive-margins:                   true;
+$enable-responsive-margins--tiny:             true;
+$enable-responsive-margins--small:            true;
+$enable-responsive-margins--large:            true;
+$enable-responsive-margins--huge:             true;
+
+$enable-responsive-margins--negative:         true;
+$enable-responsive-margins--negative-tiny:    true;
+$enable-responsive-margins--negative-small:   true;
+$enable-responsive-margins--negative-large:   true;
+$enable-responsive-margins--negative-huge:    true;
+
+$enable-responsive-margins--none:             true;
+
+$enable-responsive-paddings:                  true;
+$enable-responsive-paddings--tiny:            true;
+$enable-responsive-paddings--small:           true;
+$enable-responsive-paddings--large:           true;
+$enable-responsive-paddings--huge:            true;
+
+$enable-responsive-paddings--none:            true;
+
+
+$enable-list-block--flush:	  true;
+$enable-list-block--teeny:    true;
+$enable-list-block--tiny:     true;
+$enable-list-block--small:    true;
+$enable-list-block--large:    true;
+$enable-list-block--huge:     true;
+
+$enable-list-inline--delimited: true;
+
+//Flex Grid
+$flex-enable-layout--tiny:     false !default;
+$flex-enable-layout--small:    false !default;
+$flex-enable-layout--large:    false !default;
+$flex-enable-layout--huge:     false !default;
+$flex-enable-layout--flush:    false !default;
+$flex-enable-layout--rev:      false !default;
+$flex-enable-layout--top:      false !default;
+$flex-enable-layout--middle:   false !default;
+$flex-enable-layout--bottom:   false !default;
+$flex-enable-layout--right:    false !default;
+$flex-enable-layout--center:   false !default;
+$flex-enable-layout--auto:     false !default;
+
+
+$enable-panel--flush:       true;
+$enable-panel--teeny:       true;
+$enable-panel--tiny:        true;
+$enable-panel--small:       true;
+$enable-panel--large:       true;
+$enable-panel--huge:        true;
+
+
+$enable-responsive-text-alignment:	true !default;

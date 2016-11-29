@@ -1,0 +1,14 @@
+///*------------------------------------*\
+//    #BUTTON-STATES
+//\*------------------------------------*/
+
+
+@mixin button-states($color, $ratio: $btn-default-ratio, $prop: 'background') {
+	#{$prop}-color: $color;
+	&:hover, &:focus { #{$prop}-color: darken($color, $ratio); }
+	&:disabled {
+		#{$prop}-color: desaturate(
+			lighten($color, triple($ratio)), quadruple($ratio)
+		);
+	}
+}

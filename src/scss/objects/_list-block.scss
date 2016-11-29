@@ -1,0 +1,165 @@
+/*------------------------------------*\
+    #LIST-BLOCK
+\*------------------------------------*/
+
+/**
+ * The list-block object creates blocky list items out of a `ul` or `ol`.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$list-block-padding:          $base-spacing-unit !default;
+$list-block-padding--teeny:   $base-spacing-unit--teeny !default;
+$list-block-padding--tiny:    $base-spacing-unit--tiny !default;
+$list-block-padding--small:   $base-spacing-unit--small !default;
+$list-block-padding--large:   $base-spacing-unit--large !default;
+$list-block-padding--huge:    $base-spacing-unit--huge !default;
+
+$enable-list-block--flush:    false !default;
+$enable-list-block--teeny:    false !default;
+$enable-list-block--tiny:     false !default;
+$enable-list-block--small:    false !default;
+$enable-list-block--large:    false !default;
+$enable-list-block--huge:     false !default;
+
+
+/* @styleguide
+
+## List Block
+
+
+```
+<ul class="o-list-block  o-list-block--tiny">
+    <li><a href="#">Foo</a></li>
+    <li><a href="#">Bar</a></li>
+    <li><a href="#">Baz</a></li>
+</ul>
+```
+
+*/
+
+
+.#{$object-namespace}list-block,
+%#{$object-namespace}list-block {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+        @extend %#{$object-namespace}list-block__item;
+    }
+
+}
+
+    .#{$object-namespace}list-block__item,
+    %#{$object-namespace}list-block__item {
+        > a { padding: $list-block-padding; }
+    }
+
+
+@if ($enable-list-block--flush == true) {
+
+    /**
+     * flush list-blocks.
+     */
+
+    .#{$object-namespace}list-block--flush,
+    %#{$object-namespace}list-block--flush {
+
+        > .#{$object-namespace}list-block__item,
+        > %#{$object-namespace}list-block__item {
+            > a { padding: 0 }
+        }
+
+    }
+
+}
+
+@if ($enable-list-block--teeny == true) {
+
+    /**
+     * Tiny list-blocks.
+     */
+
+    .#{$object-namespace}list-block--teeny,
+    %#{$object-namespace}list-block--teeny {
+
+        > .#{$object-namespace}list-block__item,
+        > %#{$object-namespace}list-block__item {
+            > a { padding: $list-block-padding--teeny; }
+        }
+
+    }
+
+}
+
+@if ($enable-list-block--tiny == true) {
+
+    /**
+     * Tiny list-blocks.
+     */
+
+    .#{$object-namespace}list-block--tiny,
+    %#{$object-namespace}list-block--tiny {
+
+        > .#{$object-namespace}list-block__item,
+        > %#{$object-namespace}list-block__item {
+            > a { padding: $list-block-padding--tiny; }
+        }
+
+    }
+
+}
+
+@if ($enable-list-block--small == true) {
+
+    /**
+     * Small list-blocks.
+     */
+
+    .#{$object-namespace}list-block--small,
+    %#{$object-namespace}list-block--small {
+
+        > .#{$object-namespace}list-block__item,
+        > %#{$object-namespace}list-block__item {
+            > a { padding: $list-block-padding--small; }
+        }
+
+    }
+
+}
+
+@if ($enable-list-block--large == true) {
+
+    /**
+     * Large list-blocks.
+     */
+
+    .#{$object-namespace}list-block--large,
+    %#{$object-namespace}list-block--large {
+
+        > .#{$object-namespace}list-block__item,
+        > %#{$object-namespace}list-block__item {
+            > a { padding: $list-block-padding--large; }
+        }
+
+    }
+
+}
+
+@if ($enable-list-block--huge == true) {
+
+    /**
+     * Huge list-blocks.
+     */
+
+    .#{$object-namespace}list-block--huge,
+    %#{$object-namespace}list-block--huge {
+
+        > .#{$object-namespace}list-block__item,
+        > %#{$object-namespace}list-block__item {
+            > a { padding: $list-block-padding--huge; }
+        }
+
+    }
+
+}

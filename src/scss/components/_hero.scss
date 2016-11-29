@@ -1,0 +1,8 @@
+$hero-height: 300px !default;
+
+.c-hero {
+    min-height: $hero-height;
+    background-color: $brand-violet;
+    padding: $base-spacing-unit--large;
+}
+

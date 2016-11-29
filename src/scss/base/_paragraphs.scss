@@ -1,0 +1,50 @@
+/*------------------------------------*\
+    #PARAGRAPHS
+\*------------------------------------*/
+
+
+/* @styleguide
+
+## Body Copy
+
+The `.lede` class is used to make the introductory text (usually a paragraph) of a document slightly larger: en.wikipedia.org/wiki/Lede_(news)
+
+```
+
+<p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt venenatis tristique.
+Pellentesque in semper nunc. Suspendisse vitae eleifend enim, sed imperdiet est. Quisque auctor, nisi sed ullamcorper ullamcorper,
+leo lorem sagittis nisi, vitae dignissim dui diam et neque.</p>
+
+<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras fermentum, velit accumsan faucibus porttitor, nulla massa ultrices nibh, vitae luctus sapien velit eu risus.
+Suspendisse bibendum ullamcorper pellentesque. Sed vitae velit et mauris rutrum pretium bibendum vitae metus. Cras non mi viverra, malesuada
+ex at, placerat justo.</p>
+```
+
+*/
+
+/**
+ * The `.lede` class is used to make the introductory text (usually a paragraph)
+ * of a document slightly larger: en.wikipedia.org/wiki/Lede_(news)
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$lede-size:         21px !default;
+$lede-size-large:   30px !default;
+
+
+
+
+
+
+.lede,
+%lede {
+    @extend %margin-bottom;
+    @include font-size(21px, 1.3);
+}
+
+
+.lede--large,
+%lede--large {
+    @extend %margin-bottom;
+    @include font-size(30px, 1.2);
+}

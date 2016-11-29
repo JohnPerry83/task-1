@@ -1,0 +1,15 @@
+///*------------------------------------*\
+//    #Z-INDEX
+//\*------------------------------------*/
+
+// define 5 planes of depth separated between 10.
+
+$z-index-plane-minus-1:     -10 !default;
+$z-index-plane-minus-2:     -20 !default;
+
+$z-index-plane-1:           10 !default;
+$z-index-plane-2:           20 !default;
+$z-index-plane-3:           30 !default;
+$z-index-plane-4:           40 !default;
+$z-index-plane-5:           50 !default;
+

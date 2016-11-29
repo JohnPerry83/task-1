@@ -1,0 +1,185 @@
+/*------------------------------------*\
+    $DEBUG
+\*------------------------------------*/
+
+
+/**
+ * Enable $debug-mode to visually detect any improperly nested or
+ * potentially invalid markup, or any potentially inaccessible code.
+ *
+ * Red          ==      definite error
+ * Yellow       ==      double-check
+ * None         ==      should be fine
+ *
+ * Please note that this method of checking markup quality should not be relied
+ * upon entirely. Validate your markup!
+ */
+
+
+
+$debug-mode: true !default;
+
+@mixin maybe-fix() {
+    outline: 5px solid yellow;
+}
+
+@mixin must-fix() {
+    outline: 5px solid red;
+}
+
+@mixin all-good() {
+    outline: none;
+}
+
+@if $debug-mode == true {
+
+
+/**
+ * Are there any empty elements in your page?
+ */
+:empty {
+    // @include maybe-fix;
+}
+
+
+/**
+ * Images require `alt` attributes, empty `alt`s are fine but should be
+ * double-checked, no `alt` is bad and is flagged red.
+ */
+img {
+    @include must-fix;
+}
+img[alt] {
+    @include all-good;
+}
+img[alt=""] {
+    @include maybe-fix;
+}
+
+
+/**
+ * Links sometimes, though not always, benefit from `title` attributes. Links
+ * without are never invalid but it’s a good idea to check.
+ */
+// a {
+//     @include maybe-fix;
+// }
+// a[title] {
+//     @include all-good;
+// }
+
+
+/**
+ * Double-check any links whose `href` is something questionable.
+ */
+a[href="#"],
+a[href*="javascript"] {
+    @include maybe-fix;
+}
+
+
+/**
+ * The `target` attribute ain’t too nice...
+ */
+a[target] {
+    @include maybe-fix;
+}
+
+
+/**
+ * Ensure any lists only contain `li`s as children.
+ */
+ul,
+ol {
+    > *:not(li) {
+        @include must-fix;
+    }
+}
+
+
+/**
+ * It’s always nice to give `th`s `scope` attributes.
+ */
+th {
+    @include maybe-fix;
+}
+th[scope] {
+    @include all-good;
+}
+
+
+/**
+ * `tr`s as children of `table`s ain’t great, did you need a `thead`/`tbody`?
+ */
+table > tr {
+    @include maybe-fix;
+}
+
+
+/**
+ * `tfoot` needs to come *before* `tbody`.
+ */
+tbody + tfoot {
+    @include maybe-fix;
+}
+
+
+/**
+ * Forms require `action` attributes
+ */
+form {
+    @include must-fix;
+}
+form[action] {
+    @include all-good;
+}
+
+
+/**
+ * Various form-field types have required attributes. `input`s need `type`
+ * attributes, `textarea`s need `rows` and `cols` attributes and submit buttons
+ * need a `value` attribute.
+ */
+textarea,
+input {
+    @include must-fix;
+}
+input[type] {
+    @include all-good;
+}
+textarea[rows][cols] {
+    @include all-good;
+}
+input[type=submit] {
+    @include must-fix;
+}
+input[type=submit][value] {
+    @include all-good;
+}
+
+
+/**
+ * Avoid inline styles where possible.
+ */
+[style] {
+    // @include maybe-fix;
+}
+
+
+/**
+ * You should avoid using IDs for CSS, is this doing any styling?
+ */
+[id] {
+    // @include maybe-fix;
+}
+
+
+/**
+ * Are you using the grid system correctly?
+ */
+.#{$object-namespace}layout > :not(.#{$object-namespace}layout__item),
+.#{$object-namespace}layout--rev > :not(.#{$object-namespace}layout__item) {
+    @include must-fix;
+}
+
+}
